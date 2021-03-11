@@ -1,10 +1,10 @@
 "use strict";
 
-const sequelize = require("sequelize");
+//const sequelize = require("sequelize");
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("users", {
+    await queryInterface.createTable("user", {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -12,19 +12,19 @@ module.exports = {
         allowNull: false,
       },
       name: {
-        type: sequelize.STRING,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       email: {
-        type: sequelize.STRING,
+        type: Sequelize.STRING,
         allowNull: false,
       },
-      created_at: {
-        type: sequelize.DATE,
+      createdAt: {
+        type: Sequelize.DATE,
         allowNull: false,
       },
-      updated_at: {
-        type: sequelize.DATE,
+      updatedAt: {
+        type: Sequelize.DATE,
         allowNull: false,
       },
     });
