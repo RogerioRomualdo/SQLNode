@@ -4,17 +4,18 @@ const User = require("../models/User");
 module.exports = {
   async index(req, res) {
     // const { user_id } = req.params;
-    // if (!user) {
-    //   return res.status(400).json({ error: "User not found" });
-    // }
-    // const addresses = await Address.findByPk(user_id);
+
+    // const user = await User.findByPk(user_id);
+    // const addresses = await Address.findAll();
+
     // return res.json(addresses);
     const { user_id } = req.params;
 
-    const user = await User.findByPk(user_id);
-    const addresses = await Address.findAll();
+    const user = await User.findByPk(user_id, {
+      include: { association: "addresses" },
+    });
 
-    return res.json(addresses);
+    res.json(user);
   },
 
   async store(req, res) {
